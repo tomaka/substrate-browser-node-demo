@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+	<title>Substrate node</title>
+	<script type="module">
+import { start_client, default as init } from './pkg/node_browser.js';
+import ws from './ws.js';
+
+function log(msg) {
+	document.getElementsByTagName('body')[0].innerHTML += msg + '\n';
+}
+
+async function start() {
+	log('Loading WASM');
+	await init('./pkg/node_browser_bg.wasm');
+	log('Successfully loaded WASM');
+
+	// Build our client.
+	log('Starting client');
+	let client = start_client(ws());
+	log('Client started');
+
+	while (true) {
+		let event = await client.next_event();
+		log('Event: ' + event);
+		console.log(event);
+	}
+}
+
+start();
+	</script>
+  </head>
+  <body style="white-space: pre"></body>
+</html>
