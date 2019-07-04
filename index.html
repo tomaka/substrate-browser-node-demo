@@ -21,11 +21,14 @@ async function start() {
 	let client = start_client(ws());
 	log('Client started');
 
-	while (true) {
-		let event = await client.next_event();
-		log('Event: ' + event);
-		console.log(event);
-	}
+	client.rpcSubscribe('{"method":"chain_subscribeNewHead","params":[],"id":1,"jsonrpc":"2.0"}',
+		(r) => log("New chain head: " + r));
+
+	setInterval(() => {
+		client
+			.rpcSend('{"method":"system_networkState","params":[],"id":1,"jsonrpc":"2.0"}')
+			.then((r) => log("Network state: " + r));
+	}, 1000);
 }
 
 start();
