@@ -1,13 +1,6 @@
 
 let wasm;
 
-function __wbg_elem_binding0(arg0, arg1) {
-    wasm.__wbg_function_table.get(3241)(arg0, arg1);
-}
-function __wbg_elem_binding1(arg0, arg1) {
-    wasm.__wbg_function_table.get(4778)(arg0, arg1);
-}
-
 const heap = new Array(32);
 
 heap.fill(undefined);
@@ -24,11 +17,17 @@ function addHeapObject(obj) {
     heap[idx] = obj;
     return idx;
 }
-function __wbg_elem_binding2(arg0, arg1, arg2) {
-    wasm.__wbg_function_table.get(2686)(arg0, arg1, addHeapObject(arg2));
+function __wbg_elem_binding0(arg0, arg1, arg2) {
+    wasm.__wbg_function_table.get(2702)(arg0, arg1, addHeapObject(arg2));
+}
+function __wbg_elem_binding1(arg0, arg1) {
+    wasm.__wbg_function_table.get(4793)(arg0, arg1);
+}
+function __wbg_elem_binding2(arg0, arg1) {
+    wasm.__wbg_function_table.get(3257)(arg0, arg1);
 }
 function __wbg_elem_binding3(arg0, arg1, arg2, arg3) {
-    wasm.__wbg_function_table.get(4800)(arg0, arg1, addHeapObject(arg2), addHeapObject(arg3));
+    wasm.__wbg_function_table.get(4815)(arg0, arg1, addHeapObject(arg2), addHeapObject(arg3));
 }
 /**
 * Starts the client.
@@ -714,7 +713,43 @@ function init(module) {
         const ret = wasm.memory;
         return addHeapObject(ret);
     };
-    imports.wbg.__wbindgen_closure_wrapper11859 = function(arg0, arg1, arg2) {
+    imports.wbg.__wbindgen_closure_wrapper9713 = function(arg0, arg1, arg2) {
+        const state = { a: arg0, b: arg1, cnt: 1 };
+        const real = () => {
+            state.cnt++;
+            const a = state.a;
+            state.a = 0;
+            try {
+                return __wbg_elem_binding2(a, state.b, );
+            } finally {
+                if (--state.cnt === 0) wasm.__wbg_function_table.get(3258)(a, state.b);
+                else state.a = a;
+            }
+        }
+        ;
+        real.original = state;
+        const ret = real;
+        return addHeapObject(ret);
+    };
+    imports.wbg.__wbindgen_closure_wrapper8757 = function(arg0, arg1, arg2) {
+        const state = { a: arg0, b: arg1, cnt: 1 };
+        const real = (arg0) => {
+            state.cnt++;
+            const a = state.a;
+            state.a = 0;
+            try {
+                return __wbg_elem_binding0(a, state.b, arg0);
+            } finally {
+                if (--state.cnt === 0) wasm.__wbg_function_table.get(2703)(a, state.b);
+                else state.a = a;
+            }
+        }
+        ;
+        real.original = state;
+        const ret = real;
+        return addHeapObject(ret);
+    };
+    imports.wbg.__wbindgen_closure_wrapper11848 = function(arg0, arg1, arg2) {
         const state = { a: arg0, b: arg1, cnt: 1 };
         const real = () => {
             state.cnt++;
@@ -723,43 +758,7 @@ function init(module) {
             try {
                 return __wbg_elem_binding1(a, state.b, );
             } finally {
-                if (--state.cnt === 0) wasm.__wbg_function_table.get(4779)(a, state.b);
-                else state.a = a;
-            }
-        }
-        ;
-        real.original = state;
-        const ret = real;
-        return addHeapObject(ret);
-    };
-    imports.wbg.__wbindgen_closure_wrapper8768 = function(arg0, arg1, arg2) {
-        const state = { a: arg0, b: arg1, cnt: 1 };
-        const real = (arg0) => {
-            state.cnt++;
-            const a = state.a;
-            state.a = 0;
-            try {
-                return __wbg_elem_binding2(a, state.b, arg0);
-            } finally {
-                if (--state.cnt === 0) wasm.__wbg_function_table.get(2687)(a, state.b);
-                else state.a = a;
-            }
-        }
-        ;
-        real.original = state;
-        const ret = real;
-        return addHeapObject(ret);
-    };
-    imports.wbg.__wbindgen_closure_wrapper9724 = function(arg0, arg1, arg2) {
-        const state = { a: arg0, b: arg1, cnt: 1 };
-        const real = () => {
-            state.cnt++;
-            const a = state.a;
-            state.a = 0;
-            try {
-                return __wbg_elem_binding0(a, state.b, );
-            } finally {
-                if (--state.cnt === 0) wasm.__wbg_function_table.get(3242)(a, state.b);
+                if (--state.cnt === 0) wasm.__wbg_function_table.get(4794)(a, state.b);
                 else state.a = a;
             }
         }
