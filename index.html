@@ -3,6 +3,7 @@
   <head>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
 	<title>Substrate node</title>
+	<link rel="shortcut icon" href="/favicon.png" />
 	<script type="module">
 import { start_client, default as init } from './pkg/node_browser.js';
 import ws from './ws.js';
@@ -25,6 +26,9 @@ async function start() {
 		(r) => log("New chain head: " + r));
 
 	setInterval(() => {
+		client
+			.rpcSend('{"method":"system_networkState","params":[],"id":1,"jsonrpc":"2.0"}')
+			.then((r) => log("Network state: " + r));
 		client
 			.rpcSend('{"method":"system_networkState","params":[],"id":1,"jsonrpc":"2.0"}')
 			.then((r) => log("Network state: " + r));
