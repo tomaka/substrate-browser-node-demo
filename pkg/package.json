@@ -1,0 +1,14 @@
+{
+  "name": "node-cli",
+  "collaborators": [
+    "Parity Technologies <admin@parity.io>"
+  ],
+  "description": "Substrate node implementation in Rust.",
+  "version": "2.0.0",
+  "files": [
+    "node_cli_bg.wasm",
+    "node_cli.js"
+  ],
+  "module": "node_cli.js",
+  "sideEffects": "false"
+}
